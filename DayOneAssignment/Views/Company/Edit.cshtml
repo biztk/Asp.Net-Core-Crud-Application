@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model DayOneAssignment.Models.Company
+@{
+    //Layout = null;
+}
+
+    <form class="form-control" asp-action="Edit" method="post">
+        <div class="col-md-6">
+            <label class="form-label" asp-for="CompanyName">Company Name:</label>
+            <input asp-for="CompanyName" class="form-control" />
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" asp-for="CompanyAddress">Company Address:</label>
+            <input asp-for="CompanyAddress" class="form-control" />
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" asp-for="CompanyDescription">Company Description:</label>
+            <input asp-for="CompanyDescription" class="form-control" />
+        </div>
+        <button class="" type="submit">Submit</button>
+    </form>

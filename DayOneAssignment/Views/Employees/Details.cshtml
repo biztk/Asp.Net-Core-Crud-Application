@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model DayOneAssignment.Models.Employee
+
+<div class="container p-3 my-3 border">
+    <h1>Employee Details</h1>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.EmployeeFirstName)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.EmployeeFirstName)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.EmployeeLastName)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.EmployeeLastName)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Company.CompanyName)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Company.CompanyName)
+        </dd>
+    </dl>
+    <div>
+        <a class="btn btn-primary" asp-action="AddOrEdit" asp-route-compId="@Model.EmployeeId">Edit</a>
+        <a class="btn btn-danger" asp-action="Index">Back</a>
+    </div>
+</div>

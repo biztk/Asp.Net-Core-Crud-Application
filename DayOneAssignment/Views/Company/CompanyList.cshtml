@@ -1,0 +1,33 @@
+﻿@model List<Company>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div>
+    <h1>Hi Company</h1>
+</div>
+
+<table class ="table table-bordered">
+    <thead>
+        <tr >
+            <td>Id</td>
+            <td>companyName</td>
+            <td>CompanyAddress</td>
+        </tr>
+    </thead>
+  
+    
+        @foreach(var item in Model)
+        {
+            <tbody>
+                <tr>
+                <td>@item.CompanyId</td>
+                <td>@item.CompanyName</td>
+                <td>@item.CompanyAddress</td>
+                </tr>
+           
+        </tbody>
+        }
+    
+</table>

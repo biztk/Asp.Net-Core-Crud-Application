@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<DayOneAssignment.Models.Company>
+<a  class="btn btn-outline-primary" asp-controller="Company" asp-action="Create">Add Company</a>
+<hr />
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyDescription)
+        </th>
+        <th>Action Button</th>
+    </tr>
+    <tbody>
+        @foreach(DayOneAssignment.Models.Company item in Model)
+        {
+ <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyDescription)
+                </td>
+                <td class="text-center">
+                    <a asp-action="Edit" class="btn btn-outline-primary" asp-route-CompanyId="@item.CompanyId">Edit</a>
+
+                    <a asp-action="Details" class="btn btn-outline-info" asp-route-compId="@item.CompanyId">Details</a>
+
+                    <a asp-action="Delete" class="btn btn-outline-danger" asp-route-compId="@item.CompanyId">Delete</a>
+                </td>
+                </tr>
+           
+
+        }
+    </tbody>
+</table>

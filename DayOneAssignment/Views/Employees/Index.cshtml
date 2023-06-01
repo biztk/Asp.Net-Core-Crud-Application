@@ -1,0 +1,92 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model PaginatedList<DayOneAssignment.Models.Employee>
+
+<a class="btn btn-outline-primary" asp-controller="Employees" asp-action="Create">Add Employee</a>
+
+
+<hr />
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color" style="font-size:12px">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" style="border-color:orange;border-bottom-left-radius:10px;border-top-left-radius:0px;height:32px;width:360px" />
+            <input type="submit" value="Search" class="btn btn-primary" style="font-size:12px;border-color:none;border-radius:0px" /> 
+            <a asp-action="Index" class="btn btn-warning" style="color:white;font-size:12px;border-color:none;border-radius:0px">Back to Full List</a>
+        </p>
+    </div>
+</form>
+<hr />
+<table class="table table-bordered">
+    <tr>
+        
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">EmployeeFirstName</a>
+
+            @*<a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">EmployeeFirstName</a>*@
+
+            @*@Html.DisplayNameFor(model => model.EmployeeFirstName)*@
+        </th>
+        <th>
+            EmployeeLastName
+        </th>
+        <th>
+            BirthDate
+        </th>
+        <th>
+          Company
+        </th>
+        <th>Action Button</th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Company.CompanyName)
+                    @*@item.Company.CompanyName*@
+                </td>
+                <td class="text-center">
+                    <a asp-action="Edit" class="btn btn-outline-primary" asp-route-EmployeeId="@item.EmployeeId">Edit</a>
+
+                    <a asp-action="Details" class="btn btn-outline-info" asp-route-EmployeeId="@item.EmployeeId">Details</a>
+
+                    <a asp-action="Delete" class="btn btn-outline-danger" asp-route-EmployeeId="@item.EmployeeId">Delete</a>
+
+                </td>
+            </tr>
+
+
+        }
+    </tbody>
+</table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
